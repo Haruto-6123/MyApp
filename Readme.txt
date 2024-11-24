@@ -5,3 +5,9 @@ npm install marked
 npm install body-parse
 * npm install simple-git
 * npm install ngrok
+
+コマンド
+"""
+npm run push
+npm start
+"""
