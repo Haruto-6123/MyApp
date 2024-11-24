@@ -1,0 +1,43 @@
+<div class="expenses-wrapper">
+    <div class="expenses-table-submit">
+        <form action="/expenses/add_expenses" method="post" autocomplete="off">
+            <label>日付： <input type="date" name="date" calss="date" required> </label>
+            <label>内容： <input type="text" name="content" class="content" required> </label>
+            <label>金額： <input type="number" name="money" class="money"  required> </label>    
+            <label>収支： <input type="checkbox" id="expenses" class="expenses" name="expenses"><label for="expenses">収入ですか？</label> </label>
+            <input type="submit" value="作成する" class="submit">
+        </form>
+    </div>
+    <div class="expenses-table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="date">日付</th>
+                    <th class="content">使ったもの</th>
+                    <th class="money">金額</th>
+                    <th class="expenses">収支</th>
+                    <th class="operate">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% expenses.forEach((expen) => { %>
+                    <tr>
+                        <td class="date"><%= expen.date %></td>
+                        <td class="content"><%= expen.content %></td>
+                        <td class="money"><%= expen.amount.toLocaleString() %></td>
+                        <% if (expen.expenses == true) { %>
+                            <td class="expenses">収入</td>
+                        <% } else { %>
+                            <td class="expenses">支出</td>
+                        <% } %>
+                        <td class="operate">
+                            <form action="/expenses/delete_expenses/<%= expen.id %>" method="post">
+                                <input type="submit" value="削除" onclick="return confirm('削除しますか?');">
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

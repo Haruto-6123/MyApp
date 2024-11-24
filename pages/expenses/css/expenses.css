@@ -1,0 +1,113 @@
+.expenses-wrapper .expenses-table-submit {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.expenses-wrapper .expenses-table-submit input {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.expenses-wrapper .expenses-table-submit .submit {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.expenses-wrapper .expenses-table-submit .submit:hover {
+    color: white;
+    background-color: blue;
+}
+
+.expenses-table-wrapper {
+    height: 300px;
+    overflow-y: auto;
+}
+
+.expenses-table-wrapper table {
+    height: 600px;
+    overflow-y: auto;
+    border-collapse: separate;
+    empty-cells: show;
+    border: 1px solid #000;
+    width: 100%;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: white;
+}
+
+.expenses-table-wrapper tr, 
+.expenses-table-wrapper th,
+.expenses-table-wrapper td {
+    border: 1px solid #000;
+}
+
+.expenses-table-wrapper table .date{
+    width: 20%;
+}
+
+.expenses-table-wrapper table .content {
+    width: 40%;
+}
+
+.expenses-table-wrapper table .money {
+    width: 20%;
+}
+
+.expenses-table-wrapper table .expenses {
+    width: 10%;
+}
+
+.expenses-table-wrapper table .operate {
+    width: 10%;
+}
+
+.expenses-table-wrapper table thead {
+    position: sticky;
+    top: 0;
+    background-color: green;
+    color: white;
+}
+
+.expenses-table-wrapper tbody .date,
+.expenses-table-wrapper tbody .expenses,
+.expenses-table-wrapper tbody .operate {
+    text-align: center;
+}
+
+.expenses-table-wrapper tbody .content {
+    text-align: left;
+    padding-left: 10px;
+}
+
+.expenses-table-wrapper tbody .money {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.expenses-table-wrapper tbody .operate form input {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.expenses-table-wrapper tbody .operate form input:hover {
+    color: #FF82B2;
+}

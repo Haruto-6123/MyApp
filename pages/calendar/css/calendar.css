@@ -1,0 +1,69 @@
+.calendar-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.calendar-wrap table {
+    border: 2px solid black;
+}
+
+.calendar {
+    width: 100%;
+    background-color: white;
+}
+
+.calendar caption {
+    text-align: center;
+    padding: 5px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.calendar caption:after {
+    content: "月";
+    padding: 5px;
+}
+
+.calendar th, .calendar td {
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.calendar .sun {
+    color: #e17f7e;
+    background-color: #f8e4e2;
+}
+.calendar .sat {
+    color: #7ab6f3;
+    background-color: #e7f6fd;
+}
+.calendar .mute {
+    color: #aaa;
+    background-color: #EEEEEE;
+}
+.calendar .today {
+    background-color: #d8ff7b;
+}
+.calendar .off_sun {
+    background-color: #fadcdb;
+}
+.calendar .off_sat {
+    background-color: #e7f6fd;
+}
+
+.calendar button {
+    font-size: 20px;
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 3px;
+}
+
+.calendar button:hover{
+    background-color: skyblue;
+    color: white;
+}

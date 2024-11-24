@@ -1,0 +1,114 @@
+.todoList-table-wrapper .table_submit {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.todoList-table-wrapper .table_submit input {
+    margin-top: 0;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.todoList-table-wrapper .table_submit .submit {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.todoList-table-wrapper .table_submit .submit:hover {
+    color: white;
+    background-color: blue;
+}
+
+.todoList-table-wrapper table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.todoList-table-wrapper .ids{
+    background-color: white;
+    border: 1px solid #000;
+    width: 5%;
+}
+
+.todoList-table-wrapper .contents{
+    background-color: white;
+    border: 1px solid #000;
+    width: 60%;
+}
+
+.todoList-table-wrapper .dates{
+    background-color: white;
+    border: 1px solid #000;
+    width: 20%;
+}
+
+.todoList-table-wrapper .operate-wrapper {
+    width: 10%;
+    background-color: #CCFFFF;
+}
+
+.todoList-table-wrapper thead{
+    text-align: center;
+    font-weight: bold;
+}
+
+.todoList-table-wrapper tbody .ids,
+.todoList-table-wrapper tbody .dates {
+    text-align: center;
+}
+
+.todoList-table-wrapper tbody .contents{
+    text-align: left;
+    padding-left: 10px;
+}
+
+.todoList-table-wrapper .operate {
+    display: flex;
+    gap: 10px;
+    margin: 0 5px;
+}
+
+.todoList-table-wrapper .delete {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.todoList-table-wrapper .delete:hover {
+    color: #FF82B2;
+}
+
+.todoList-table-wrapper .edit {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.todoList-table-wrapper .edit:hover {
+    color: #77F9C3;
+}

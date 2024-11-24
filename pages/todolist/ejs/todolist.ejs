@@ -1,0 +1,37 @@
+<div class="todoList-table-wrapper">
+    <div class="table_submit">
+        <form action="/todolist/add_todo" method="post">
+            内容： <input type="text" name="contents" required>        
+            日付： <input type="date" name="dates" required>
+            <input type="submit" value="作成する" class="submit">
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="ids">ID</th>
+                <th class="contents">内容</th>
+                <th class="dates">期限</th>
+                <th class="operate-wrapper"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% todoList.forEach((todo) =>{ %>
+                <tr>
+                    <td class="ids"><%= todo.ids %></td>
+                    <td class="contents"><%= todo.contents %></td>
+                    <td class="dates"><%= todo.dates %></td>
+                    <td class="operate-wrapper">
+                        <div class="operate">
+                            <form action="/todolist/delete_todo/<%= todo.ids %>" method="post">
+                                <input type="submit" value="削除" onclick="return confirm('削除しますか?');" class="delete">
+                            </form>
+                            <input type="button" value="編集" class="edit">
+                        </div>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

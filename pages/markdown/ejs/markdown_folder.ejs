@@ -1,0 +1,33 @@
+<div class="markdown-folder-table-wrapper">
+    <div class="table-submit">
+        <form action="/markdown/add_file" method="post">
+            名前 <input type="text" name="name" required>
+            File名 <input type="text" name="url" required>
+            <input type="submit" value="追加" class="submit">
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th class="name">ファイル名</th>
+                <th class="operate-wrapper"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% folders.forEach((folder) => {%>
+                <tr>
+                    <td class="name"><a href="/markdown/<%= folder.url %>"><%= folder.name %></a></td>
+                    <td class="operate-wrapper">
+                        <div class="operate">
+                            <form action="/markdown/delete_file/<%= folder.id %>" method="post">
+                                <input type="submit" value="削除" onclick="return confirm('削除しますか?');" class="delete">
+                                <input type="hidden" name="pathName" value="<%= folder.url %>"">
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>

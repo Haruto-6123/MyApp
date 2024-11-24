@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Management</title>
+    <link rel="stylesheet", href="/css/style.css">
+    <link rel="stylesheet", href="./css/calendar.css">
+    <link rel="stylesheet", href="./css/todolist.css">
+</head>
+<body>
+    <header id="header"></header>
+
+    <div class="container">
+        <div class="container-header">
+            <h1>Calendar</h1>
+        </div>
+        <div id="calendar" class="calendar-wrap"></div>
+
+        <div class="container-header">
+            <h1>ToDOリスト</h1>
+        </div>
+        <%- include("../../pages/todolist/ejs/todolist.ejs", {todoList: todoList}) %>
+
+        <div class="container-header">
+            <h1>収支</h1>
+        </div>        
+        <div class="expenses_graph_warraper" style="background-color: white;margin-top: 30px;">
+            <canvas id="myLineChart"></canvas>
+	            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+        </div>
+
+        <div class="container-header">
+            <h1>markdown</h1>
+        </div>
+        <form action="/markdown/test/<%= currentPathName %>" method="post">
+            <input type="submit" value="Test">
+        </form>
+
+    </div>
+    <footer></footer>
+
+    <script src="/js/include.js"></script>
+    <script src="./js/calendar.js"></script>
+
+    <script>
+        const expensesDatas = <%- JSON.stringify(expenses) %>;
+    </script>
+    <script src="./js/expenses_graph.js" defer></script>
+    
+</body>
+</html>

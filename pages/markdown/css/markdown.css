@@ -1,0 +1,129 @@
+.markdown-header {
+    width: 100%;
+    display: flex;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.markdown-header .back {
+    width: 30%;
+    text-align: left;
+}
+
+.markdown-header .preview-edit {
+    width: 70%;
+    text-align: left;
+}
+
+.markdown-wrapper {
+    width: 100%;
+    background-color: white;
+    padding: 25px 50px;
+    border: 0.5px solid #aaa;
+}
+
+.markdown-wrapper ul, 
+.markdown-wrapper li{
+    list-style-type: disc;
+    margin-left: 10px;
+}
+
+.markdown-wrapper textarea {
+    field-sizing: content;
+    width: 100%;
+    height: 100%;
+    padding: 25px 50px;
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 2.0em;
+}
+
+.markdown-folder-table-wrapper .table-submit {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.markdown-folder-table-wrapper .table-submit input{
+    margin-top: 0;
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+.markdown-folder-table-wrapper .table-submit .submit {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.markdown-folder-table-wrapper .table-submit .submit:hover {
+    color: white;
+    background-color: blue;
+}
+
+.markdown-folder-table-wrapper table {
+    border-collapse: collapse;
+    width: 60%;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: white;
+}
+
+.markdown-folder-table-wrapper thead{
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+.markdown-folder-table-wrapper thead .name{
+    width: 30%;
+}
+
+.markdown-folder-table-wrapper tbody .name{
+    border-right: 1px solid black;
+}
+
+.markdown-folder-table-wrapper .operate-wrapper{
+    width: 10%;
+    padding-left: 20px;
+}
+
+.markdown-folder-table-wrapper .name{
+    padding-left: 20px;
+}
+
+.markdown-folder-table-wrapper table a:hover {
+    color: blue;
+}
+
+.markdown-folder-table-wrapper table .delete {
+    color: black;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.markdown-folder-table-wrapper table .delete:hover {
+    color: #FF82B2;
+}
+
+.markdown-header a:hover {
+    color: #FF82B2;
+}
