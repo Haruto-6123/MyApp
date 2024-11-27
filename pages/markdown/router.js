@@ -86,6 +86,17 @@ router.post('/add_file', (req, res) => {
     );
 });
 
+router.post('/edit_file/:id', (req, res) => {
+    // console.log(req.body.name);
+    connection.query(
+        'UPDATE markdown SET name=? WHERE id=?;',
+        [req.body.name, req.params.id],
+        (error, results) => {
+            res.redirect('/markdown');
+        }
+    );
+});
+
 router.post('/delete_file/:id', (req, res) => {
     const filePath = path.join(__dirname, `/pages/${req.body.pathName}`);
     if (fs.existsSync(filePath)) {

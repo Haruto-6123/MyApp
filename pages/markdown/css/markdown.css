@@ -30,6 +30,25 @@
     margin-left: 10px;
 }
 
+.markdown-wrapper ol{
+    padding-left: 10px;;
+}
+
+.markdown-wrapper ol li {
+    list-style-type: decimal;
+}
+
+.markdown-wrapper table {
+    border: 1px solid black;
+}
+
+.markdown-wrapper th,
+.markdown-wrapper td {
+    border: 1px solid black;
+    font-weight: normal;
+    text-align: left;
+}
+
 .markdown-wrapper textarea {
     field-sizing: content;
     width: 100%;
@@ -127,4 +146,9 @@
 
 .markdown-header a:hover {
     color: #FF82B2;
+}
+
+.markdown-folder-table-wrapper table .operate {
+    display: flex;
+    gap: 24px;
 }
