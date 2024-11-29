@@ -1,16 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
-var mysql = require('mysql');
-// MySqlのsetput
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'mydb',
-    dateStrings: 'date',
-    multipleStatements: true
-});
+var pool = require('../../app.js');
 
 router.use(express.static('pages/main'));
 router.use(express.static('pages/calendar'));
@@ -21,17 +11,20 @@ router.get('/', (req, res) => {
     const currentPathName = "main";
     const sql_1 = `SELECT * FROM todo_list;`;
     const sql_2 = `SELECT * FROM expenses;`;
-    connection.query(
-        sql_1 + sql_2,
-        (error, results) => {
-            res.render('main/main.ejs', 
-                {
-                    todoList: results[0],
-                    expenses: results[1],
-                    currentPathName: currentPathName
-                });
-        }
-    );
+    pool.getConnection((err, connection) => {
+        connection.query(
+            sql_1 + sql_2,
+            (error, results) => {
+                connection.release();
+                res.render('main/main.ejs', 
+                    {
+                        todoList: results[0],
+                        expenses: results[1],
+                        currentPathName: currentPathName
+                    });
+            }
+        );
+    });
 });
 
 module.exports=router;

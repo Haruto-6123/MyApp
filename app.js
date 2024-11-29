@@ -1,6 +1,20 @@
 const express = require('express');
 const app = express();
 
+// MySqlのsetput
+const mysql = require('mysql');
+const pool = mysql.createPool({
+    connectionLimit: 10,
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'mydb',
+    dateStrings: 'date',
+    multipleStatements: true
+});
+
+module.exports = pool;
+
 // ミドルウェア(HTTPリクエストとレスポンスの間の処理)
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));

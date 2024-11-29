@@ -3,33 +3,26 @@ var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
 var router = express.Router();
-
-var mysql = require('mysql');
-// MySqlのsetput
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'mydb',
-    dateStrings: 'date',
-    multipleStatements: true
-});
+var pool = require('../../app.js');
 
 router.use(express.static('pages/markdown'));
 router.use(bodyParser.json());
 
 router.get('/', (req, res) => {
     const currentPathName = "markdown";
-    connection.query(
-        `SELECT * FROM markdown;`,
-        (error, results) => {
-            res.render('markdown/markdown_folder.ejs', 
-                {
-                    folders: results,
-                    currentPathName: currentPathName
-                });
-        }
-    );
+    pool.getConnection((err, connection) => {
+        connection.query(
+            `SELECT * FROM markdown;`,
+            (error, results) => {
+                connection.release();
+                res.render('markdown/markdown_folder.ejs', 
+                    {
+                        folders: results,
+                        currentPathName: currentPathName
+                    });
+            }
+        );
+    });
 });
 
 router.get('/:pathName', (req, res) => {
@@ -41,7 +34,7 @@ router.get('/edit/:pathName', (req, res) => {
 });
 
 router.get('/load_markdown/:pathName', (req, res) => {
-    const filePath = path.join(__dirname, `/pages/${req.params.pathName}`);
+    const filePath = path.join(__dirname, `../../../data/pages/${req.params.pathName}`);
     const defaultContent = '';
     if (fs.existsSync(filePath)) {
         fs.readFile(filePath, 'utf8', (err, data) => {
@@ -66,7 +59,7 @@ router.post('/save_markdown/:pathName', (req, res) => {
     if (!content) {
         return res.status(400).send("Content is required.");
     }
-    const filePath = path.join(__dirname, `/pages/${req.params.pathName}`);
+    const filePath = path.join(__dirname, `../../../data/pages/${req.params.pathName}`);
     fs.writeFile(filePath, content, (err) => {
         if (err) {
             console.log(err);
@@ -77,28 +70,34 @@ router.post('/save_markdown/:pathName', (req, res) => {
 });
 
 router.post('/add_file', (req, res) => {
-    connection.query(
-        'INSERT INTO markdown (name,url) VALUES (?,?);',
-        [req.body.name, req.body.url],
-        (error, results) => {
-            res.redirect('/markdown');
-        }
-    );
+    pool.getConnection((err, connection) => {
+        connection.query(
+            'INSERT INTO markdown (name,url) VALUES (?,?);',
+            [req.body.name, req.body.url],
+            (error, results) => {
+                connection.release();
+                res.redirect('/markdown');
+            }
+        );
+    });
 });
 
 router.post('/edit_file/:id', (req, res) => {
     // console.log(req.body.name);
-    connection.query(
-        'UPDATE markdown SET name=? WHERE id=?;',
-        [req.body.name, req.params.id],
-        (error, results) => {
-            res.redirect('/markdown');
-        }
-    );
+    pool.getConnection((err, connection) => {
+        connection.query(
+            'UPDATE markdown SET name=? WHERE id=?;',
+            [req.body.name, req.params.id],
+            (error, results) => {
+                connection.release();
+                res.redirect('/markdown');
+            }
+        );
+    });
 });
 
 router.post('/delete_file/:id', (req, res) => {
-    const filePath = path.join(__dirname, `/pages/${req.body.pathName}`);
+    const filePath = path.join(__dirname, `../../../data/pages/${req.params.pathName}`);
     if (fs.existsSync(filePath)) {
         fs.unlink(filePath, (err) => {
             if (err) {
@@ -110,13 +109,16 @@ router.post('/delete_file/:id', (req, res) => {
     } else {
         console.error('Not file');
     }
-    connection.query(
-        'DELETE FROM markdown WHERE id = ?;',
-        [req.params.id],
-        (error, results) => {
-            res.redirect('/markdown');
-        }
-    );
+    pool.getConnection((err, connection) => {
+        connection.query(
+            'DELETE FROM markdown WHERE id = ?;',
+            [req.params.id],
+            (error, results) => {
+                connection.release();
+                res.redirect('/markdown');
+            }
+        );
+    });
 });
 
 router.post('/test/:pathName', (req, res) => {
