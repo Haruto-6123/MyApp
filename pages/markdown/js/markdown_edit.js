@@ -36,3 +36,22 @@ textarea.addEventListener('input', async () => {
 
 // 初期表示
 displayPage();
+
+textarea.addEventListener('input', () => {
+    const rect = textarea.getBoundingClientRect(); // テキストエリアの位置を取得
+    const bottomSpace = window.innerHeight - rect.bottom; // テキストエリア下の余白を計算
+    const cursorPosition = textarea.selectionEnd; // カーソル位置を取得
+
+    // 行数を計算して、カーソルが下部付近にある場合のみスクロール
+    const totalLines = textarea.value.split('\n').length; // カーソルの行数
+    const NowLines = textarea.value.substr(0, cursorPosition).split('\n').length; // カーソルの行数
+    
+    if (NowLines > totalLines - 20) {
+        if (bottomSpace < 100) { // 下の余白が100px未満ならスクロール
+            window.scrollBy({
+                top: 100 - bottomSpace, // 不足分スクロール
+                behavior: 'smooth', // スムーズにスクロール
+            });
+        }
+    }
+});
