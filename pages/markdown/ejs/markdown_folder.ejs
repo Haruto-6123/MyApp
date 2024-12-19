@@ -21,7 +21,7 @@
                     <td class="operate-wrapper">
                         <div class="operate">
                             <button id="edit" onclick="editFolderName(this)" value="<%= folder.id %>">編集</button>
-                            <button id="done" onclick="saveFolderName(this)" value="<%= folder.id %>" disabled>完了</button>
+                            <button id="done" onclick="saveFolderName(this, `<%- folder.url %>`)" value="<%= folder.id %>" disabled>完了</button>
                             <form action="/markdown/delete_file/<%= folder.id %>" method="post">
                                 <input type="submit" value="削除" onclick="return confirm('削除しますか?');" class="delete">
                                 <input type="hidden" name="pathName" value="<%= folder.url %>">

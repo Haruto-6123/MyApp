@@ -18,3 +18,13 @@ nrgok.exe
 ```
 ngrok http 3000  --basic-auth="username:password"
 ```
+MySQL
+```
+mysql --user="user" --password
+CREATE databases "database";
+use "database";
+SHOW databases;
+CREATE TABLE users (id INT AUTO_INCREMENT, name TEXT, PRIMARY KEY (id));
+SHOW tables;
+DESCRIBE "users";
+```

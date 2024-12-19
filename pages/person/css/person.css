@@ -1,0 +1,35 @@
+/* .person-table-wrapper input {
+    border: none;
+    resize: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 2.0em;
+    overflow-y: auto;
+} */
+
+.person-table-wrapper table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    font-weight: normal;
+    background-color: white;
+}
+
+.person-table-wrapper thead{
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 1px solid black;
+}
+
+/* .person-table-wrapper thead .date{
+    width: 30%;
+} */
+
+.person-table-wrapper tbody .date{
+    border-right: 1px solid black;
+}
+
+.person-table-wrapper table .operate {
+    display: flex;
+    gap: 24px;
+}

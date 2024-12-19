@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Management/Person</title>
+    <link rel="stylesheet", href="/css/style.css">
+    <link rel="stylesheet", href="./css/person.css">
+</head>
+<body>
+    <header id="header"></header>
+
+    <div class="container">
+        <div class="container-header">
+            <h1>Person</h1>
+        </div>
+        <%- include("../../pages/person/ejs/person.ejs", {persons: persons}) %>
+    </div>
+    
+    <footer></footer>
+    
+    <script src="/js/include.js"></script>
+    <script src="./js/person.js"></script>
+
+</body>
+</html>

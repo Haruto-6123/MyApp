@@ -19,12 +19,12 @@ function editFolderName(button) {
     });
 }
 
-function saveFolderName(button) {
+function saveFolderName(button, url) {
     table.querySelectorAll("td").forEach(cell => {
         if (cell.id == button.value) {
             cell.querySelectorAll(".edit-mode input").forEach(input => {
                 const value = input.value;
-                input.parentElement.textContent = value;
+                cell.innerHTML = `<a href="/markdown/${url}">${value}</a>`;
                 postFolderName(button.value, value);
             });
             cell.classList.remove("edit-mode");

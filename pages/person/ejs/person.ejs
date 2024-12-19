@@ -1,0 +1,46 @@
+<div class="person-table-wrapper">
+    <table id="table">
+        <thead>
+            <tr>
+                <th class="date">日付</th>
+                <th class="name">名前</th>
+                <th class="place">場所</th>
+                <th class="impression">印象</th>
+                <th class="memo">メモ</th>
+                <th class="operate-wrapper"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <form action="/person/add_person" method="post">
+                    <td class="date"><input type="date" name="date" required></td>
+                    <td class="name"><input type="text" name="name" required></td>
+                    <td class="place"><input type="text" name="place" required></td>
+                    <td class="impression"><input type="text" name="impression" required></td>
+                    <td class="memo"><input type="text" name="memo" required></td>
+                    <td class="operate-wrapper">
+                        <div class="operate"><input type="submit" value="追加" class="submit"></div>
+                    </td>
+                </form>
+            </tr>
+            <% persons.forEach((person) => { %>
+                <tr>
+                    <td class="date" id="<%= person.id %>"><%= person.date %></td>
+                    <td class="name" id="<%= person.id %>"><%= person.name %></td>
+                    <td class="place" id="<%= person.id %>"><%= person.place %></td>
+                    <td class="impression" id="<%= person.id %>"><%= person.impression %></td>
+                    <td class="memo" id="<%= person.id %>"><%= person.memo %></td>
+                    <td class="operate-wrapper">
+                        <div class="operate">
+                            <button id="edit" onclick="editPerson(this)" value="<%= person.id %>">編集</button>
+                            <button id="done" onclick="savePerson(this)" value="<%= person.id %>" disabled>完了</button>
+                            <form action="/person/delete_person/<%= person.id %>" method="post">
+                                <input type="submit" value="削除" onclick="return confirm('削除しますか?');" class="delete">
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</div>
