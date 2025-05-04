@@ -25,6 +25,7 @@ app.use('/main', require('./pages/main/router.js'));
 app.use('/calendar', require('./pages/calendar/router.js'));
 app.use('/todolist', require('./pages/todolist/router.js'));
 app.use('/expenses', require('./pages/expenses/router.js'));
+app.use('/expenses_new', require('./pages/expenses_new/router.js'));
 app.use('/markdown', require('./pages/markdown/router.js'));
 app.use('/person', require('./pages/person/router.js'));
 

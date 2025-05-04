@@ -1,0 +1,63 @@
+<div class="expenses-wrapper">
+    <div class="expenses-table-submit">
+        <form action="/expenses_new/add_expenses" method="post" autocomplete="off">
+            <label>日付： <input type="date" name="date" calss="date" required> </label>
+            <label>金額： <input type="number" name="money" class="money"  required> </label>
+            <label>ジャンル：
+                <select name="category">
+                    <option value="">選択して下さい</option>
+                    <option value="食費">食費</option>
+                    <option value="日用品">日用品</option>
+                    <option value="たばこ/酒">たばこ/酒</option>
+                    <option value="趣味">趣味</option>
+                    <option value="交通">交通</option>
+                    <option value="住宅">住宅</option>
+                    <option value="水道光熱/通信">水道光熱/通信</option>
+                    <option value="クレジット">クレジット</option>
+                    <option value="税金">税金</option>
+                    <option value="給料">給料</option>
+                    <option value="経費">経費</option>
+                    <option value="その他">その他</option>
+                </select>
+            </label>
+            <label>概要： <input type="text" name="content" class="content" required> </label>
+            <label>収支：
+                <select name="expenses" id="expenses">
+                    <option value="支出">支出</option>
+                    <option value="収入">収入</option>
+                </select>
+            </label>
+            <input type="submit" value="作成する" class="submit">
+        </form>
+    </div>
+    <div class="expenses-table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th class="date">日付</th>
+                    <th class="money">金額</th>
+                    <th class="category">ジャンル</th>
+                    <th class="content">概要</th>
+                    <th class="expenses">収支</th>
+                    <th class="operate">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% expenses.forEach((exp) => {%>
+                    <tr>
+                        <td class="date"><%= exp.date %></td>
+                        <td class="money"><%= exp.amount.toLocaleString() %></td>
+                        <td class="category"><%= exp.category %></td>
+                        <td class="content"><%= exp.content %></td>
+                        <td class="expenses"><%= exp.expenses %></td>
+                        <td class="operate">
+                            <form action="/expenses_new/delete_expenses/<%= exp.id %>" method="post">
+                                <input type="submit" value="削除" onclick="return confirm('削除しますか?');">
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>

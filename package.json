@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parse": "^0.1.0",
+    "chart.js": "^4.4.9",
     "express": "^4.21.1",
     "marked": "^15.0.2",
     "mysql": "^2.18.1",
